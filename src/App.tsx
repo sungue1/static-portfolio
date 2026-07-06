@@ -358,6 +358,7 @@ export default function App(): JSX.Element {
               </div>
               <div className="cta-row">
                 <a className="btn btn-primary" href="#projects">프로젝트 보기</a>
+                <a className="btn btn-ghost" href="https://drive.google.com/drive/folders/1tW5oxYWosyT0vK69soA23j91Xs1JAsrW?usp=drive_link" target="_blank" rel="noopener noreferrer">구글 드라이브</a>
                 <a className="btn btn-ghost" href="#contact">연락하기</a>
               </div>
             </div>
