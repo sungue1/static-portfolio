@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Engineer Portfolio</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Pretendard', sans-serif;
+            background: #0b1220;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            width: 700px;
+            height: 700px;
+            background: #ff990055;
+            border-radius: 50%;
+            filter: blur(140px);
+            top: -250px;
+            right: -200px;
+            z-index: -2;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            background: #1f8cff30;
+            border-radius: 50%;
+            filter: blur(140px);
+            left: -250px;
+            bottom: -200px;
+            z-index: -2;
+        }
+
+        header {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(15px);
+            background: rgba(7, 12, 22, .75);
+            border-bottom: 1px solid rgba(255, 255, 255, .08);
+        }
+
+        nav {
+            width: 1200px;
+            max-width: 92%;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #ff9900;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            opacity: .8;
+            transition: .3s;
+        }
+
+        nav a:hover {
+            color: #ff9900;
+            opacity: 1;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 120px 5%;
+        }
+
+        .hero-wrap {
+            width: 1200px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .hero h3 {
+            color: #ff9900;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span {
+            color: #ff9900;
+        }
+
+        .hero p {
+            color: #cfd8e3;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .btns {
+            margin-top: 40px;
+            display: flex;
+            gap: 18px;
+        }
+
+        .btn {
+            padding: 15px 28px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: .3s;
+        }
+
+        .primary {
+            background: #ff9900;
+            color: #111;
+        }
+
+        .primary:hover {
+            transform: translateY(-3px);
+        }
+
+        .secondary {
+            border: 1px solid rgba(255, 255, 255, .2);
+            color: white;
+        }
+
+        .secondary:hover {
+            background: white;
+            color: #111;
+        }
+
+        .diagram {
+            position: relative;
+            height: 500px;
+        }
+
+        .cloud {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 220px;
+            height: 220px;
+            background: #ff9900;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: 800;
+            color: #111;
+            box-shadow: 0 0 60px rgba(255, 153, 0, .5);
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .node {
+            position: absolute;
+            width: 130px;
+            height: 70px;
+            background: rgba(255, 255, 255, .06);
+            border: 1px solid rgba(255, 255, 255, .15);
+            border-radius: 14px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+        }
+
+        .line {
+            position: absolute;
+            background: #ff9900;
+            transform-origin: left;
+            height: 2px;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translate(-50%, -50%) translateY(0);
+            }
+
+            50% {
+                transform: translate(-50%, -50%) translateY(-15px);
+            }
+        }
+
+        section {
+            width: 1200px;
+            max-width: 92%;
+            margin: auto;
+            padding: 90px 0;
+        }
+
+        .section-title {
+            font-size: 2.4rem;
+            margin-bottom: 50px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, .05);
+            border: 1px solid rgba(255, 255, 255, .08);
+            border-radius: 18px;
+            padding: 30px;
+            transition: .35s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: #ff9900;
+        }
+
+        .card h2 {
+            color: #ff9900;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            color: #cfd8e3;
+            line-height: 1.8;
+        }
+
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 20px;
+        }
+
+        .skill {
+            padding: 22px;
+            background: rgba(255, 255, 255, .05);
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, .08);
+            transition: .3s;
+        }
+
+        .skill:hover {
+            background: #ff9900;
+            color: #111;
+            transform: scale(1.05);
+        }
+
+        .timeline {
+            border-left: 3px solid #ff9900;
+            padding-left: 35px;
+        }
+
+        .item {
+            margin-bottom: 45px;
+        }
+
+        .item h2 {
+            margin-bottom: 10px;
+        }
+
+        .item span {
+            color: #ff9900;
+        }
+
+        footer {
+            text-align: center;
+            padding: 60px 20px;
+            color: #8a94a6;
+        }
+
+        @media(max-width:900px) {
+
+            .hero-wrap {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .btns {
+                justify-content: center;
+            }
+
+            .diagram {
+                height: 420px;
+                margin-top: 40px;
+            }
+
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+
+        <nav>
+
+            <div class="logo">AWS Portfolio</div>
+
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skill">Skills</a></li>
+                <li><a href="#project">Projects</a></li>
+                <li><a href="#career">Journey</a></li>
+            </ul>
+
+        </nav>
+
+    </header>
+
+    <section class="hero">
+
+        <div class="hero-wrap">
+
+            <div>
+
+                <h3>HELLO WORLD</h3>
+
+                <h1>
+                    Cloud Engineer<br>
+                    <span>Focused on AWS Architecture</span>
+                </h1>
+
+                <p>
+                    AWS를 활용한 인프라 설계와 운영을 좋아하는 Cloud Engineer입니다.<br><br>
+
+                    VPC, EC2, Auto Scaling, ALB, CloudFront, Route53, RDS,
+                    Docker, Kubernetes, CI/CD, Monitoring 환경을 직접 구축하며
+                    안정적이고 확장 가능한 아키텍처를 만드는 것을 즐깁니다.
+                </p>
+
+                <div class="btns">
+                    <a href="#project" class="btn primary">View Projects</a>
+                    <a href="#skill" class="btn secondary">Tech Stack</a>
+                </div>
+
+            </div>
+
+            <div class="diagram">
+
+                <div class="cloud">AWS</div>
+
+                <div class="node" style="top:20px;left:180px;">Route53</div>
+                <div class="node" style="top:120px;right:10px;">CloudFront</div>
+                <div class="node" style="bottom:80px;right:50px;">ALB</div>
+                <div class="node" style="bottom:10px;left:180px;">EC2 / EKS</div>
+                <div class="node" style="top:180px;left:0;">RDS</div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section id="about">
+
+        <h1 class="section-title">About Me</h1>
+
+        <div class="cards">
+
+            <div class="card">
+                <h2>Cloud</h2>
+                <p>
+                    AWS 기반 인프라 구축과 운영에 가장 큰 관심을 가지고 있습니다.
+                </p>
+            </div>
+
+            <div class="card">
+                <h2>Architecture</h2>
+                <p>
+                    고가용성과 확장성을 고려한 클라우드 아키텍처를 설계합니다.
+                </p>
+            </div>
+
+            <div class="card">
+                <h2>Automation</h2>
+                <p>
+                    CI/CD와 IaC를 활용하여 반복 작업을 자동화합니다.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section id="skill">
+
+        <h1 class="section-title">Tech Stack</h1>
+
+        <div class="skills">
+
+            <div class="skill">AWS</div>
+            <div class="skill">EC2</div>
+            <div class="skill">VPC</div>
+            <div class="skill">ALB</div>
+            <div class="skill">Route53</div>
+            <div class="skill">CloudFront</div>
+            <div class="skill">Auto Scaling</div>
+            <div class="skill">IAM</div>
+            <div class="skill">RDS</div>
+            <div class="skill">Docker</div>
+            <div class="skill">Kubernetes</div>
+            <div class="skill">ArgoCD</div>
+            <div class="skill">Jenkins</div>
+            <div class="skill">GitHub Actions</div>
+            <div class="skill">Terraform</div>
+            <div class="skill">Linux</div>
+
+        </div>
+
+    </section>
+
+    <section id="project">
+
+        <h1 class="section-title">Projects</h1>
+
+        <div class="cards">
+
+            <div class="card">
+
+                <h2>MSA 금융 플랫폼</h2>
+
+                <p>
+
+                    ✔ AWS 기반 인프라 구축<br>
+                    ✔ Docker & Kubernetes 운영<br>
+                    ✔ Istio Service Mesh 적용<br>
+                    ✔ Auto Scaling 구성<br>
+                    ✔ CI/CD 자동화<br>
+                    ✔ Monitoring 구축
+
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <h2>Cloud Architecture</h2>
+
+                <p>
+
+                    VPC, Public/Private Subnet,
+                    NAT Gateway,
+                    ALB,
+                    Auto Scaling,
+                    CloudFront,
+                    Route53,
+                    RDS,
+                    Site-to-Site VPN 등 다양한 서비스를 활용한 아키텍처 설계
+
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <h2>DevOps</h2>
+
+                <p>
+
+                    GitHub,
+                    Jenkins,
+                    ArgoCD,
+                    Terraform,
+                    Docker,
+                    Kubernetes를 이용한 배포 자동화 및 운영
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section id="career">
+
+        <h1 class="section-title">Journey</h1>
+
+        <div class="timeline">
+
+            <div class="item">
+                <h2><span>STEP 01</span></h2>
+                <p>AWS Cloud 학습</p>
+            </div>
+
+            <div class="item">
+                <h2><span>STEP 02</span></h2>
+                <p>Docker & Kubernetes 기반 컨테이너 운영</p>
+            </div>
+
+            <div class="item">
+                <h2><span>STEP 03</span></h2>
+                <p>CI/CD 및 IaC 자동화 구축</p>
+            </div>
+
+            <div class="item">
+                <h2><span>STEP 04</span></h2>
+                <p>Cloud Engineer / MSP Engineer를 목표로 성장 중</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <footer>
+
+        © 2026 Cloud Engineer Portfolio · Built with HTML & CSS
+
+    </footer>
+
+</body>
+
+</html>
